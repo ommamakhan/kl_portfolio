@@ -1,3 +1,4 @@
+import React from 'react'
 import { memo, useCallback } from 'react'
 import {
   Container,
@@ -13,9 +14,9 @@ import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import { motion, useCycle } from 'framer-motion'
 import styles from './styles.module.css'
 import MobileMenu from './toggle'
-import { ThemeMode, mobileBreakpointsMap } from 'config/theme'
-import { easing, menuAnim } from 'config/animations'
-import useScrollDirection, { ScrollDirection } from 'hooks/useScrollDirection'
+import { ThemeMode, mobileBreakpointsMap } from '../../config/theme'
+import { easing, menuAnim } from '../../config/animations'
+import useScrollDirection, { ScrollDirection } from '../../hooks/useScrollDirection'
 
 const Navigation = () => {
   const { toggleColorMode, colorMode } = useColorMode()
@@ -66,7 +67,7 @@ const Navigation = () => {
           onClick={toggleColorMode}
           padding={0}
         />
-        <MobileMenu isDarkMode={IsDark} toggle={toggleOpen} isOpen={isOpen} />
+        <MobileMenu isdarkmode={IsDark} toggle={toggleOpen} isOpen={isOpen} />
       </Box>
 
       <MotionContainer

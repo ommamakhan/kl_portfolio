@@ -1,20 +1,22 @@
-import { memo, useState } from 'react'
-import { useColorMode, Image, useBreakpointValue } from '@chakra-ui/react'
+import React from 'react'
+import { useState } from 'react'
+import { useColorMode, Image } from '@chakra-ui/react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './styles.module.css'
-import { ThemeMode, mobileBreakpointsMap } from 'config/theme'
-import { simpleOpacity } from 'config/animations'
+import { mobileBreakpointsMap } from '../../config/theme'
+import { simpleOpacity } from '../../config/animations'
 
 const Logo = () => {
   const { colorMode } = useColorMode()
   const [isLogoLoaded, setLogoLoaded] = useState(false)
   const MotionImage = motion(Image)
-  const isMobile = useBreakpointValue(mobileBreakpointsMap)
+  const isMobile = mobileBreakpointsMap
+
   return (
     <AnimatePresence>
       <Link href="/" passHref>
-        {colorMode === ThemeMode.Dark ? (
+        {colorMode === 'Dark' ? (
           <MotionImage
             className={!isMobile ? styles.logo : ''}
             boxSize={isMobile ? '30px' : '50px'}
@@ -48,4 +50,4 @@ const Logo = () => {
   )
 }
 
-export default memo(Logo)
+export default React.memo(Logo)

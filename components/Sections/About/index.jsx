@@ -1,3 +1,4 @@
+import React from 'react'
 import { memo } from 'react'
 import dynamic from 'next/dynamic'
 import { useDisclosure } from '@chakra-ui/react'

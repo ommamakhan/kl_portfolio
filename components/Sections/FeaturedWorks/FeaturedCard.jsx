@@ -1,4 +1,4 @@
-/* eslint-disable react/no-multi-comp */
+import React from 'react'
 import {
   Box,
   Image,
@@ -14,20 +14,8 @@ import {
 } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import styles from './styles.module.css'
-import { easing, DURATIONS } from 'config/animations'
+import { easing, DURATIONS } from '../../../config/animations'
 
-export type FeaturedCardProps = {
-  // Still can't find what's correct value for responsive value
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  height: string | ResponsiveValue<any>
-  src: string
-  idx: number
-  title: string
-  description: string
-  objectPosition?: string
-  ctaUrl: string
-  isMobile?: boolean
-}
 
 const variants = {
   normal: {
@@ -59,12 +47,6 @@ const ProjectDescription = ({
   description,
   ctaUrl,
   isLeft,
-}: {
-  idx?: number
-  title: string
-  description: string
-  ctaUrl: string
-  isLeft: boolean
 }) => (
   <Container
     paddingX={5}
@@ -132,7 +114,7 @@ const FeaturedCard = ({
   objectPosition,
   ctaUrl,
   isMobile,
-}: FeaturedCardProps) => {
+}) => {
   const isLeftImage = isMobile ? false : idx % 2 === 0
   const bg = useColorModeValue('blackAlpha.50', 'whiteAlpha.200')
   const CoverImage = () => (

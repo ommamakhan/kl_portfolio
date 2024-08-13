@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Box,
   Icon,
@@ -7,10 +8,10 @@ import {
 } from '@chakra-ui/react'
 import { RiMouseLine } from 'react-icons/ri'
 import { motion, Variants, AnimatePresence } from 'framer-motion'
-import useScrollDirection, { ScrollDirection } from 'hooks/useScrollDirection'
-import { mobileBreakpointsMap } from 'config/theme'
+import useScrollDirection, { ScrollDirection } from '../../hooks/useScrollDirection'
+import { mobileBreakpointsMap } from '../../config/theme'
 
-const scrollMoreVariants: Variants = {
+const scrollMoreVariants = {
   initial: {
     opacity: 0,
     y: 50,
@@ -33,7 +34,7 @@ const scrollMoreVariants: Variants = {
   },
 }
 
-const emailVariants: Variants = {
+const emailVariants = {
   hidden: {
     opacity: 0,
     y: 250,

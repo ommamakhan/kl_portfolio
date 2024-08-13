@@ -1,3 +1,4 @@
+import React from 'react'
 import { memo } from 'react'
 import {
   Heading,
@@ -10,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 import { Article } from 'types/article'
 
-const DevToArticles = ({ articles }: { articles: Article[] }) => {
+const DevToArticles = ({ articles }) => {
   const bg = useColorModeValue('blackAlpha.50', 'whiteAlpha.100')
   const borderColor = useColorModeValue('blackAlpha.300', 'whiteAlpha.100')
   const alphaHover = useColorModeValue(

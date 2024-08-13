@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import React from 'react'
 import {
   Heading,
   Text,
@@ -9,8 +10,8 @@ import {
 } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 import FeaturedCard from './FeaturedCard'
-import { fadeInUpSlower, galleryStagger } from 'config/animations'
-import { mobileBreakpointsMap } from 'config/theme'
+import { fadeInUpSlower, galleryStagger } from '../../../config/animations'
+import { mobileBreakpointsMap } from '../../../config/theme'
 const MotionGrid = motion(Grid)
 const MotionGridItem = motion(GridItem)
 

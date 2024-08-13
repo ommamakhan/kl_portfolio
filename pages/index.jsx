@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Grid,
   GridItem,
@@ -8,21 +7,20 @@ import {
 } from '@chakra-ui/react'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
-import OpenGraphHead from 'components/Misc/OpenGraphHead'
-import FadeInLayout from 'components/Layout/FadeWhenVisible'
-import Menu from 'components/Menu'
-import Sidebar from 'components/Sidebar'
-import Avatar from 'components/Avatar'
-import About from 'components/Sections/About'
-import Experience from 'components/Sections/Experience'
-import FeaturedWorks from 'components/Sections/FeaturedWorks'
-import ScrollMore from 'components/Misc/ScrollMore'
-import { Article } from 'types/article'
-// These are on bottom sections so no need to render it instantly
-const DevToArticles = dynamic(() => import('components/Sections/DevToArticles'))
-const GetInTouch = dynamic(() => import('components/Sections/GetInTouch'))
+import OpenGraphHead from '../components/Misc/OpenGraphHead'
+import FadeInLayout from '../components/Layout/FadeWhenVisible'
+import Menu from '../components/Menu'
+import Sidebar from '../components/Sidebar'
+import Avatar from '../components/Avatar'
+import About from '../components/Sections/About'
+import Experience from '../components/Sections/Experience'
+import FeaturedWorks from '../components/Sections/FeaturedWorks'
+import ScrollMore from '../components/Misc/ScrollMore'
+import React from 'react'
 
-const Portfolio = ({ articles }: { articles: Article[] }): JSX.Element => {
+const GetInTouch = dynamic(() => import('../components/Sections/GetInTouch'))
+
+const Portfolio = () => {
   const sideBarPadding = useBreakpointValue({ base: '5', md: '8', lg: '14' })
   const mainContent = useBreakpointValue({
     base: '5',
@@ -31,6 +29,7 @@ const Portfolio = ({ articles }: { articles: Article[] }): JSX.Element => {
     xl: 0,
   })
   const paddTop = useBreakpointValue({ base: '20', sm: 20, md: 20 })
+
   return (
     <>
       <Script
@@ -123,18 +122,6 @@ const Portfolio = ({ articles }: { articles: Article[] }): JSX.Element => {
             </FadeInLayout>
             <FadeInLayout>
               <Box
-                id="blog"
-                className="contentRow"
-                paddingTop={{ base: 0, lg: 20, xl: 20 }}
-                paddingBottom={{ base: 12, lg: 10 }}
-                paddingX={0}
-                flexDirection={'row'}
-              >
-                <DevToArticles articles={articles} />
-              </Box>
-            </FadeInLayout>
-            <FadeInLayout>
-              <Box
                 id="contact"
                 className="contentRow"
                 paddingTop={{ base: 0, lg: 20, xl: 20 }}
@@ -150,16 +137,6 @@ const Portfolio = ({ articles }: { articles: Article[] }): JSX.Element => {
       <ScrollMore />
     </>
   )
-}
-
-export async function getStaticProps() {
-  const res = await fetch('https://dev.to/api/articles?username=klawingco')
-  const articles = await res.json()
-  return {
-    props: {
-      articles,
-    },
-  }
 }
 
 export default Portfolio

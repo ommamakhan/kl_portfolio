@@ -1,3 +1,4 @@
+import React from 'react'
 import { useEffect } from 'react'
 import {
   Container,
@@ -8,10 +9,10 @@ import { motion, Variants, useAnimation } from 'framer-motion'
 import Logo from '../Logo'
 import styles from './styles.module.css'
 import Navigation from './Navigation'
-import { mobileBreakpointsMap } from 'config/theme'
-import useScrollDirection, { ScrollDirection } from 'hooks/useScrollDirection'
+import { mobileBreakpointsMap } from '../../config/theme'
+import useScrollDirection, { ScrollDirection } from '../../hooks/useScrollDirection'
 
-const mobileMenuVariants: Variants = {
+const mobileMenuVariants = {
   hidden: {
     opacity: [1, 0.85, 0],
     y: -80,

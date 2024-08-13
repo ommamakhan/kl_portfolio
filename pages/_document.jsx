@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import React from 'react'
 
 class MyDocument extends Document {
   render() {
@@ -16,7 +17,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           ></link>
         </Head>
-        <body>
+        <body className='!overflow-x-hidden'>
           <Main />
           <NextScript />
         </body>

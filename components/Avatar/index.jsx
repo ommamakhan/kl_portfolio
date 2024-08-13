@@ -1,42 +1,41 @@
+import React from 'react'
 import {
   Box,
-  Image as ChkImage,
+  Image,
   Text,
   Link,
   SkeletonCircle,
   useColorModeValue,
 } from '@chakra-ui/react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect } from 'react'
-import { avatarAnimation } from 'config/animations'
+import { useEffect, useState } from 'react'
+import {avatarAnimation} from '../../config/animations'
 
-const AvatarImages = {
+const avatarImages = {
   DarkMode: '/KL_avatar.png',
   LightMode: './KL_avatar_light.png',
 }
 
-declare global {
-  interface Window {
-    preloadedPictures?: HTMLImageElement[]
-  }
-}
-
 const Avatar = () => {
   const MotionBox = motion(Box)
-  const imgAvatar = useColorModeValue(
-    AvatarImages.LightMode,
-    AvatarImages.DarkMode
-  )
+  const [imgAvatar, setImgAvatar] = useState('')
+
+  const currentMode = useColorModeValue('LightMode', 'DarkMode')
+  useEffect(() => {
+    setImgAvatar(avatarImages[currentMode])
+  }, [currentMode])
+
   useEffect(() => {
     // Some nice preloading and caching
-    const images = [AvatarImages.DarkMode, AvatarImages.LightMode]
+    const images = [avatarImages.DarkMode, avatarImages.LightMode]
     const preloadedImages = images.map((imageSrc) => {
-      const img = new Image()
+      const img = new window.Image()
       img.src = imageSrc
       return img
     })
     window.preloadedPictures = preloadedImages
   }, [])
+
   return (
     <AnimatePresence>
       <MotionBox
@@ -49,7 +48,7 @@ const Avatar = () => {
         variants={avatarAnimation}
         exit={{ opacity: 0 }}
       >
-        <ChkImage
+        <Image
           src={imgAvatar}
           alt="KL Lawingco Avatar"
           htmlWidth="250"

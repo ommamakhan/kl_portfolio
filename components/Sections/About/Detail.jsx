@@ -1,3 +1,4 @@
+import React from 'react'
 import { memo } from 'react'
 import {
   Heading,
@@ -13,26 +14,33 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react'
 import {
-  SiDotNet,
   SiJavascript,
   SiTypescript,
   SiGraphql,
   SiReact,
-  SiNextDotJs,
-  SiNodeDotJs,
-  SiDocker,
+  SiNextdotjs,
+  SiNodedotjs,
 } from 'react-icons/si'
 import { GiCoffeePot } from 'react-icons/gi'
 import { IoMdOpen } from 'react-icons/io'
 
-type ISkillSetModal = {
-  onOpen(): void
-}
-
-const Detail = ({ onOpen }: ISkillSetModal) => {
+const Detail = ({ onOpen }) => {
   const emphasis = useColorModeValue('teal.500', 'cyan.200')
-  const currentYear = new Date().getFullYear()
-  const professionalYears = currentYear - 2016
+  const startDate = new Date('2023-03-01'); // Starting date
+  const currentDate = new Date(); // Current date
+  
+  const yearsDiff = currentDate.getFullYear() - startDate.getFullYear();
+  const monthsDiff = currentDate.getMonth() - startDate.getMonth();
+  
+  // Adjust years if monthsDiff is negative
+  const totalYears = monthsDiff < 0 ? yearsDiff - 1 : yearsDiff;
+  const totalMonths = monthsDiff < 0 ? monthsDiff + 12 : monthsDiff;
+  
+  // Format the output based on months
+  const professionalYears = totalMonths === 0
+    ? `${totalYears} year${totalYears !== 1 ? 's' : ''}`
+    : `${totalYears} year${totalYears !== 1 ? 's' : ''} and ${totalMonths} month${totalMonths !== 1 ? 's' : ''}`;
+  
 
   return (
     <Stack
@@ -51,41 +59,28 @@ const Detail = ({ onOpen }: ISkillSetModal) => {
         What i do.
       </Heading>
       <Text variant="description">
-        I`ve been coding professionally for {professionalYears} years now and
-        currently working as a <b>Software Engineer</b> that focuses on{' '}
-        <b>architecture</b>, <b>APIs</b>,{' '}
+        I`ve been coding professionally for {professionalYears}  now and
+        currently working as a <b>MERN Stack Developer</b>. My focus lies in{' '}
+        <b>architecture</b>, <b>API development</b> and the{' '}
         <Tooltip
           label="Ha!. Or more accurately TECH DEBT"
           aria-label="Tech Debt?"
           hasArrow
         >
           <Text as="span" variant="emphasis">
-            <b>nitty-gritty business logics</b>
+            <b>intricate business logic</b>
           </Text>
         </Tooltip>{' '}
-        and even <b>front end integration</b> stuff now, how time flies!
+        that drives applications.Additionally, I&apos;ve expanded my expertise to include <b>Front-end Development</b> adapting to the evolving demands of modern web development.
         <br /> <br />
-        Here are few technologies that are cup of my{' '}
-        <Tooltip
-          label="I only drink tea if I needed too!"
-          aria-label="I hate Tea!"
-          hasArrow
-        >
-          <Text as="span" variant="emphasis" textDecorationLine="line-through">
-            tea
-          </Text>
-        </Tooltip>{' '}
-        coffee <Icon as={GiCoffeePot} color={emphasis} />.
+        Here are a few technologies that I specialize in:{' '}
+       
       </Text>
 
       <SimpleGrid columns={2} spacing={4}>
         <List spacing={3}>
-          <ListItem fontSize="small" display="flex" alignItems="center">
-            <ListIcon as={SiDotNet} color={emphasis} fontSize="2em" />
-            C# - .NET.Core
-          </ListItem>
-          <ListItem fontSize="small" display="flex" alignItems="center">
-            <ListIcon as={SiJavascript} color={emphasis} fontSize="2em" />
+
+          <ListItem fontSize="small" display="flex" alignItems="center"> <ListIcon as={SiJavascript} color={emphasis} fontSize="2em" />
             Javascript (ES6+)
           </ListItem>
           <ListItem fontSize="small" display="flex" alignItems="center">
@@ -94,7 +89,7 @@ const Detail = ({ onOpen }: ISkillSetModal) => {
           </ListItem>
 
           <ListItem fontSize="small" display="flex" alignItems="center">
-            <ListIcon as={SiNodeDotJs} color={emphasis} fontSize="2em" />
+            <ListIcon as={SiNodedotjs} color={emphasis} fontSize="2em" />
             Node
           </ListItem>
         </List>
@@ -108,24 +103,20 @@ const Detail = ({ onOpen }: ISkillSetModal) => {
             React
           </ListItem>
           <ListItem fontSize="small" display="flex" alignItems="center">
-            <ListIcon as={SiNextDotJs} color={emphasis} fontSize="2em" />
+            <ListIcon as={SiNextdotjs} color={emphasis} fontSize="2em" />
             NextJS
           </ListItem>
-          <ListItem fontSize="small" display="flex" alignItems="center">
-            <ListIcon as={SiDocker} color={emphasis} fontSize="2em" />
-            Docker
-          </ListItem>
+
         </List>
-        <Box>
-          <Text
-            as="button"
-            variant="emphasis"
-            fontSize="smaller"
-            textAlign="left"
-            onClick={onOpen}
-          >
-            See my full arsenal <Icon as={IoMdOpen} />
-          </Text>
+        <Box> <Text
+          as="button"
+          variant="emphasis"
+          fontSize="smaller"
+          textAlign="left"
+          onClick={onOpen}
+        >
+        See my full arsenal <Icon as={IoMdOpen} />
+        </Text>
         </Box>
       </SimpleGrid>
     </Stack>

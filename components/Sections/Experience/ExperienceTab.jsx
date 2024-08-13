@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from 'react'
 import {
   Text,
   Link,
@@ -20,8 +20,8 @@ import {
 } from '@chakra-ui/react'
 import { BiRightArrow } from 'react-icons/bi'
 import styles from './styles.module.css'
-import { ExperiencesList } from 'config/experience'
-import { mobileBreakpointsMap } from 'config/theme'
+import { ExperiencesList } from '../../../config/experience'
+import { mobileBreakpointsMap } from '../../../config/theme'
 
 const ExperienceTab = () => {
   const { colorMode } = useColorMode()
@@ -37,7 +37,7 @@ const ExperienceTab = () => {
       md: 'vertical',
       lg: 'vertical',
       xl: 'vertical',
-    }) ?? ('vertical' as any)
+    }) ?? ('vertical')
 
   const tabMinWidth = useBreakpointValue({
     base: '160px',
@@ -57,7 +57,7 @@ const ExperienceTab = () => {
       >
         {ExperiencesList.map((company) => (
           <Tab
-            key={`Tab-${company.name}`}
+            key={`Tab-${company?.name}`}
             fontSize="smaller"
             h="120px"
             minWidth={tabMinWidth}
@@ -75,9 +75,9 @@ const ExperienceTab = () => {
           >
             <Image
               src={
-                colorMode === 'dark' ? company.logo.dark : company.logo.light
+                colorMode === 'dark' ? company?.logo.dark : company?.logo.light
               }
-              alt={company.longName}
+              alt={company?.longName}
               maxWidth="88px"
               fallback={<Skeleton height="100%" width="100%" />}
             ></Image>
@@ -86,7 +86,7 @@ const ExperienceTab = () => {
       </TabList>
       <TabPanels>
         {ExperiencesList.map((company) => (
-          <TabPanel key={`TabPanel-${company.name}`}>
+          <TabPanel key={`TabPanel-${company?.name}`}>
             <SlideFade offsetY="20px" in={true}>
               <Stack spacing={0}>
                 <Text
@@ -95,18 +95,18 @@ const ExperienceTab = () => {
                   fontWeight="bold"
                   variant="description"
                 >
-                  {company.position}
+                  {company?.position}
                 </Text>
                 <Text as="span">
                   <Link
-                    href={company.url}
+                    href={company?.url}
                     aria-label="scentregroup"
                     rel="noreferrer"
                     target="_blank"
                     fontSize="lg"
                     fontWeight="bold"
                   >
-                    #{company.name}
+                    #{company?.name}
                   </Link>
                   <Text
                     as="span"
@@ -115,15 +115,15 @@ const ExperienceTab = () => {
                     variant="description"
                   >
                     {' '}
-                    {company.subDetail}
+                    {company?.subDetail}
                   </Text>
                 </Text>
-                <Text fontSize="smaller">{company.duration}</Text>
+                <Text fontSize="smaller">{company?.duration}</Text>
               </Stack>
               <List spacing={3} pt={5}>
-                {company.roles?.map((roleDesc, idx) => (
+                {company?.roles?.map((roleDesc, idx) => (
                   <ListItem
-                    key={`${company.name}-desc-${idx}`}
+                    key={`${company?.name}-desc-${idx}`}
                     fontSize="smaller"
                     display="flex"
                     alignItems="center"

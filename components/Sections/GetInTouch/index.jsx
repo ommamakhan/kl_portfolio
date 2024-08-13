@@ -1,9 +1,10 @@
 import { memo } from 'react'
 import { Heading, Text, Stack, Link, Icon, Box } from '@chakra-ui/react'
-import { motion, Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
+import React from 'react'
 import { useInView } from 'react-intersection-observer'
 import { RiHeartPulseFill, RiCopyleftLine, RiGithubFill } from 'react-icons/ri'
-const rimuruVariant: Variants = {
+const rimuruVariant = {
   shake: {
     rotate: [0, 15, 0, -15, 0],
     transition: {
@@ -67,7 +68,7 @@ const GetInTouch = () => {
       </Text>
 
       <Box
-        spacing={0.5}
+        letterSpacing={0.5}
         textAlign="center"
         fontFamily="monospace"
         paddingTop={{ base: 10, lg: 20, xl: 20 }}
@@ -82,9 +83,7 @@ const GetInTouch = () => {
           _focus={{ boxShadow: 'none' }}
         >
           <Text as="span">
-            <Icon as={RiGithubFill} h={6} w={6} /> <br />
-            Designed and Made with <Icon as={RiHeartPulseFill} /> <br />
-            KL Lawingco <Icon as={RiCopyleftLine} /> 2021
+            Ommama Khan
           </Text>
         </Link>
       </Box>

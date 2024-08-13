@@ -10,6 +10,7 @@ import {
   Icon,
   useBreakpointValue,
 } from '@chakra-ui/react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import styles from './styles.module.css'
 import {
@@ -18,8 +19,8 @@ import {
   simpleOpacity,
   stagger,
   scaleUp,
-} from 'config/animations'
-import { SocialMedias } from 'config/sidebar'
+} from '../../config/animations'
+import { SocialMedias } from '../../config/sidebar'
 const Sidebar = () => {
   const { colorMode } = useColorMode()
   const display = useBreakpointValue({ base: 'none', lg: 'block' })
@@ -40,9 +41,8 @@ const Sidebar = () => {
     >
       <motion.div
         id="sidebarCircle"
-        className={`${styles.sidebar} ${
-          colorMode === 'light' ? styles.dark : ''
-        }`}
+        className={`${styles.sidebar} ${colorMode === 'light' ? styles.dark : ''
+          }`}
         variants={scaleUp}
         style={{ display: display }}
         animate={colorMode === 'dark' ? 'animate' : 'lightMode'}
@@ -61,7 +61,7 @@ const Sidebar = () => {
             variant="accent"
             fontWeight="light"
           >
-            Ohh you found me?. Howdy! I am
+            Welcome! I am
           </MotionText>
           <MotionHeading
             as="h1"
@@ -70,7 +70,7 @@ const Sidebar = () => {
             textTransform="uppercase"
             variants={fadeInUp}
           >
-            Marc Jhon
+            Ommama
           </MotionHeading>
           <MotionHeading
             as="h2"
@@ -82,7 +82,7 @@ const Sidebar = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            Lawingco.
+            Khan
           </MotionHeading>
           <MotionText
             colorScheme="gray"
@@ -90,7 +90,7 @@ const Sidebar = () => {
             className={styles.marginTopForce}
             variants={fadeInUp}
           >
-            Or you could call me KL. That works too . . .
+            Or you could call me OK. That works too . . .
           </MotionText>
 
           <MotionHeading
@@ -100,7 +100,7 @@ const Sidebar = () => {
             className={styles.marginTopSmall}
             variants={fadeInUp}
           >
-            Software Engineer
+            MERN Stack Developer
           </MotionHeading>
 
           <MotionText
@@ -110,13 +110,20 @@ const Sidebar = () => {
             variants={fadeInUp}
             maxWidth={{ base: '100%', lg: '80%' }}
           >
-            Hey! How nice of you to look at my personal site,
+            Hey there! Thanks for stopping by my portfolio—
             <Text variant="emphasis" as="span">
               {' '}
-              Thank you!
+              I appreciate it!
             </Text>
-            <br />I am software engineer that specializes at backend apis, front
-            end integration, recently found myself studying UX too.
+            <br />
+              <p >
+                I&apos;m Marc Jhon Lawingco, a passionate software engineer specializing in building robust backend APIs and seamless frontend integrations. With a strong foundation in the MERN stack (MongoDB, Express.js, React/Next.js, Node.js), I&apos;ve developed a range of scalable web applications that balance performance with user experience.
+              </p>
+              <br/>
+              <p>
+                Feel free to explore my projects, learn more about my journey, or get in touch if you&apos;d like to collaborate!
+              </p>
+
           </MotionText>
           <MotionButton
             size="lg"
@@ -128,7 +135,7 @@ const Sidebar = () => {
             width="120px"
             variants={simpleOpacity}
             as={'a'}
-            href="mailto:marcjhon18@gmail.com"
+            href="mailto:ommama.khan@gmail.com"
             target="_blank"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}

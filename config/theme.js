@@ -1,17 +1,11 @@
 import {
   extendTheme,
-  ColorMode,
-  ChakraTheme,
-  ThemeComponentProps,
 } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 
-interface IThemeMode {
-  Light: ColorMode
-  Dark: ColorMode
-}
 
-export const ThemeMode: IThemeMode = {
+
+export const ThemeMode = {
   Light: 'light',
   Dark: 'dark',
 }
@@ -35,7 +29,7 @@ const colors = {
 
 const styles = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  global: (props: any) => ({
+  global: (props) => ({
     body: {
       color: mode('gray.800', 'whiteAlpha.900')(props),
       bg: mode('gray.100', '#121212')(props),
@@ -44,16 +38,16 @@ const styles = {
 }
 
 const textVariants = {
-  emphasis: (props: ThemeComponentProps<ChakraTheme>) => ({
+  emphasis: (props) => ({
     color: mode('teal.500', 'cyan.200')(props),
   }),
-  description: (props: ThemeComponentProps<ChakraTheme>) => ({
+  description: (props) => ({
     color: mode('gray.800', 'gray.400')(props),
   }),
-  accent: (props: ThemeComponentProps<ChakraTheme>) => ({
+  accent: (props) => ({
     color: mode('black.400', 'cyan.200')(props),
   }),
-  accentAlternative: (props: ThemeComponentProps<ChakraTheme>) => ({
+  accentAlternative: (props) => ({
     color: mode('#595959', '#A6A6A6')(props),
   }),
 }
@@ -72,7 +66,7 @@ const theme = extendTheme({
       }),
       variants: {
         ...textVariants,
-        description: (props: ThemeComponentProps<ChakraTheme>) => ({
+        description: (props) => ({
           color: mode('gray.800', 'gray.400')(props),
           _hover: {
             color: mode('teal.500', 'cyan.200')(props),
